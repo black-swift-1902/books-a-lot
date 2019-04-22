@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getOneBook} from '../store'
+<<<<<<< HEAD
+=======
+import {Link} from 'react-router-dom'
+>>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
 import {addToCart} from '../store/cart'
 
 class SingleBook extends Component {

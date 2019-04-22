@@ -7,6 +7,12 @@ import {priceSum} from '../util'
  */
 
 class Checkout extends Component {
+<<<<<<< HEAD
+=======
+  constructor(props) {
+    super(props)
+  }
+>>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
 
   componentDidMount() {
     this.props.loadCart()

@@ -33,14 +33,15 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => ({
-  getOneBook: function(bookId) {
+const mapDispatch = dispatch => {
+  return {
+  getOneBook(bookId) {
     return dispatch(getOneBook(bookId))
   },
-  addBookToCart: function(book) {
+  addBookToCart(book) {
     return dispatch(addToCart(book))
   }
-})
+}
 
 /**
  * PROP TYPES

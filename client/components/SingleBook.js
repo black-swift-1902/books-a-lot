@@ -14,6 +14,7 @@ class SingleBook extends Component {
     const {title, imgUrl, price, description} = this.props.selectBook
     const message = this.props.message
     return (
+<<<<<<< HEAD
       <div className="single-book-container">
         <h2 className="single-book-title">{title}</h2>
         <div className="single-book-information">
@@ -36,6 +37,14 @@ class SingleBook extends Component {
             this.props.addBookToCart(this.props.selectBook)
           }}
         >
+=======
+      <div>
+        <h2>{title}</h2>
+        <img src={imgUrl} />
+        <h4>$ {(price / 100).toFixed(2)}</h4>
+        <p>{description}</p>
+        <button onClick={() => this.props.addBookToCart(this.props.selectBook)}>
+>>>>>>> master
           Add To Cart
         </button>
         {message && <h5>{message}</h5>}

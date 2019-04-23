@@ -1,20 +1,13 @@
 export const LOAD_CART = 'LOAD_CART'
 import axios from 'axios'
-const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 const CLEAR_CART = 'CLEAR_CART'
+import {me} from './user'
 
 const initialState = []
 /**
  * ACTION CREATORS
  */
-
-const addBook = function(book_id) {
-  return {
-    type: ADD_BOOK,
-    book_id
-  }
-}
 
 export const removeBook = function(index) {
   return {
@@ -40,6 +33,7 @@ export const addToCart = function(book) {
   return async dispatch => {
     await axios.post('/api/cart', book)
     const {data} = await axios.get('/api/cart')
+    data.message = 'Item added to cart'
     dispatch(loadCart(data))
   }
 }
@@ -61,6 +55,15 @@ export const removeBookThunk = function(index) {
 export const submitOrder = function(total) {
   return async dispatch => {
     await axios.post('/api/orders', total)
+    // const res = await axios.get('/auth/me')
+    // const user = res.data;
+    // if(user){
+    //   const {data} = await axios.get('/api/orders');
+    //   user.orderHistory = data;
+    //   console.log(user);
+    //   dispatch(getUser(user))
+    // }
+    dispatch(me())
     dispatch(clearCart())
   }
 }

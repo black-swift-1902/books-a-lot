@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getOneBook} from '../store'
-import {Link} from 'react-router-dom'
 import {addToCart} from '../store/cart'
 
 class SingleBook extends Component {
@@ -13,15 +12,33 @@ class SingleBook extends Component {
 
   render() {
     const {title, imgUrl, price, description} = this.props.selectBook
+    const message = this.props.message
     return (
-      <div>
-        <h2>{title}</h2>
-        <img src={imgUrl} />
-        <h4>$ {(price / 100).toFixed(2)}</h4>
-        <p>{description}</p>
-        <button onClick={() => this.props.addBookToCart(this.props.selectBook)}>
+      <div className="single-book-container">
+        <h2 className="single-book-title">{title}</h2>
+        <div className="single-book-information">
+          <div className="single-book-column">
+            <img src={imgUrl} />
+          </div>
+          <div className="single-book-column description-and-price">
+            <div className="book-description">
+              <h2 className="overview">Overview</h2>
+              <br />
+              <p>{description}</p>
+            </div>
+            <br />
+            <p className="single-book-price">$ {(price / 100).toFixed(2)}</p>
+          </div>
+        </div>
+        <button
+          className="button is-link"
+          onClick={() => {
+            this.props.addBookToCart(this.props.selectBook)
+          }}
+        >
           Add To Cart
         </button>
+        {message && <h5>{message}</h5>}
       </div>
     )
   }
@@ -29,7 +46,8 @@ class SingleBook extends Component {
 
 const mapState = state => {
   return {
-    selectBook: state.selectBook
+    selectBook: state.selectBook,
+    message: state.cart.message
   }
 }
 

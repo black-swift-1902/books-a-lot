@@ -28,8 +28,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/books" component={AllBooks} />
         <Route exact path="/books/:id" component={SingleBook} />
-        {/* <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} /> */}
+        <Route path="/signup" component={Signup} />
         <Route path="/checkout" component={Checkout} />
         {isLoggedIn && (
           <Switch>

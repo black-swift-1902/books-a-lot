@@ -17,29 +17,35 @@ class Navbar extends React.Component {
       return acc
     }, 0)
     return (
-      <div className="navbar">
+      <div className="navbar is-horizontal level">
         <title className="is-size-1 navbar-brand site-logo">
           <i className="fas fa-chess-knight logo-images" />BOOKS-A-LOT!<i className="fas fa-book logo-images" />
         </title>
         <nav className="navbar-end">
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home" className="nav-item">
-              Home
+          <div className="level-item">
+            <Link to="/books" className="nav-item">
+              Books
             </Link>
-            Welcome, {userEmail}!
-            <a href="#" onClick={handleClick} className="nav-item">
-              Logout
-            </a>
+            <Link to="/checkout" className="nav-item">
+              cart ({cartLength})
+            </Link>
           </div>
+          {isLoggedIn ? (
+            <div>
+              {/* The navbar will show these links after you log in */}
+              Welcome, {userEmail}!
+              <a href="#" onClick={handleClick} className="nav-item">
+                logout
+              </a>
+            </div>
           ) : (
-          <div className="nav-right">
-            {/* The navbar will show these links before you log in */}
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-            </Switch>
-          </div>
+            <div className="nav-right">
+              {/* The navbar will show these links before you log in */}
+              <Switch>
+                <Route path="/" component={Login} />
+                <Route path="/" component={Signup} />
+              </Switch>
+            </div>
           )}
         </nav>
         <br />

@@ -24,10 +24,10 @@ const removeUser = () => ({type: REMOVE_USER})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    const user = res.data;
-    if(user){
-      const {data} = await axios.get('/api/orders');
-      user.orderHistory = data;
+    const user = res.data
+    if (user) {
+      const {data} = await axios.get('/api/orders')
+      user.orderHistory = data
     }
     dispatch(getUser(user || defaultUser))
   } catch (err) {
@@ -38,16 +38,16 @@ export const me = () => async dispatch => {
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
+    res = await axios.post(`/auth/${method}`, {email, password, method})
     dispatch(getCartFromSession())
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
 
   try {
-    const user = res.data;
-    const {data} = await axios.get('/api/orders');
-    user.orderHistory = data;
+    const user = res.data
+    const {data} = await axios.get('/api/orders')
+    user.orderHistory = data
     dispatch(getUser(user))
     history.push('/books')
   } catch (dispatchOrHistoryErr) {

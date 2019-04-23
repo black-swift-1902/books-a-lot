@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error, altLink} = props
+  const {name, displayName, handleSubmit, error, altName} = props
 
   return (
     <div className="level">
@@ -22,8 +22,8 @@ const AuthForm = props => {
           <button type="submit" className="is-small">
             {displayName}
           </button>
-          <Link to={`/${altLink}`} className="nav-item">
-            {altLink}
+          <Link to="/signup" className="nav-item">
+            signup
           </Link>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
@@ -44,7 +44,7 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'login',
-    altLink: 'signup',
+    altLink: 'sign-up',
     error: state.user.error
   }
 }
@@ -52,7 +52,7 @@ const mapLogin = state => {
 const mapSignup = state => {
   return {
     name: 'signup',
-    displayName: 'signup',
+    displayName: 'sign-up',
     altLink: 'login',
     error: state.user.error
   }

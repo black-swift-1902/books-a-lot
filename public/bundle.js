@@ -284,7 +284,7 @@ function (_Component) {
       var totalPrice = books.reduce(_util__WEBPACK_IMPORTED_MODULE_3__["priceSum"], 0);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "is-size-2 has-text-centered"
-      }, "Checkout"), books.map(function (book, index) {
+      }, "Cart"), books.map(function (book, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: "book-".concat(book.id),
           className: "columns"
@@ -535,7 +535,7 @@ var AuthForm = function AuthForm(props) {
       displayName = props.displayName,
       handleSubmit = props.handleSubmit,
       error = props.error,
-      altLink = props.altLink;
+      altName = props.altName;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "level"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -559,9 +559,9 @@ var AuthForm = function AuthForm(props) {
     type: "submit",
     className: "is-small"
   }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-    to: "/".concat(altLink),
+    to: "/signup",
     className: "nav-item"
-  }, altLink)), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")));
+  }, "signup")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")));
 };
 /**
  * CONTAINER
@@ -576,7 +576,7 @@ var mapLogin = function mapLogin(state) {
   return {
     name: 'login',
     displayName: 'login',
-    altLink: 'signup',
+    altLink: 'sign-up',
     error: state.user.error
   };
 };
@@ -584,7 +584,7 @@ var mapLogin = function mapLogin(state) {
 var mapSignup = function mapSignup(state) {
   return {
     name: 'signup',
-    displayName: 'signup',
+    displayName: 'sign-up',
     altLink: 'login',
     error: state.user.error
   };
@@ -733,7 +733,7 @@ function (_React$Component) {
         return acc;
       }, 0);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar"
+        className: "navbar is-horizontal level"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
         className: "is-size-1 navbar-brand site-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -742,22 +742,27 @@ function (_React$Component) {
         className: "fas fa-book logo-images"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar-end"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/home",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "level-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/books",
         className: "nav-item"
-      }, "Home"), "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/checkout",
+        className: "nav-item"
+      }, "cart (", cartLength, ")")), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         onClick: handleClick,
         className: "nav-item"
-      }, "Logout")), ") : (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-        path: "/login",
+        path: "/",
         component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Login"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-        path: "/signup",
+        path: "/",
         component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Signup"]
-      }))), ")}"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 
@@ -980,6 +985,9 @@ function (_Component) {
         exact: true,
         path: "/books/:id",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["SingleBook"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/signup",
+        component: _components__WEBPACK_IMPORTED_MODULE_4__["Signup"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/checkout",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Checkout"]
@@ -1695,7 +1703,8 @@ var auth = function auth(email, password, method) {
                 _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/auth/".concat(method), {
                   email: email,
-                  password: password
+                  password: password,
+                  method: method
                 });
 
               case 3:

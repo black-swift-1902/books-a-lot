@@ -24,7 +24,7 @@ class Navbar extends React.Component {
         <nav className="navbar-end level-item">
           <div className="level-item">
             <Link to="/books" className="nav-item level-item">
-              Books
+              books
             </Link>
             <Link to="/checkout" className="nav-item level-item">
               cart ({cartLength})
@@ -33,6 +33,9 @@ class Navbar extends React.Component {
           {isLoggedIn ? (
             <div className="level-item">
               {/* The navbar will show these links after you log in */}
+              <Link to="/home" className="nav-item level-item">
+                home
+              </Link>
               Welcome, {userEmail}!
               <a href="#" onClick={handleClick} className="nav-item level-item">
                 logout

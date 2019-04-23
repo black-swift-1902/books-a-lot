@@ -30,3 +30,21 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.all-books-heading {
+  background-color: #347d56;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  margin-bottom: 20px;
+}
+
+.single-book-title {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.logo-images {
+  padding: 0.3em;
+}

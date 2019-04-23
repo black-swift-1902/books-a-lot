@@ -17,7 +17,7 @@ class Navbar extends React.Component{
     }, 0);
       return (
         <div className="navbar">
-          <title className="is-size-1 navbar-brand"><i className="fas fa-chess-knight" />BOOKS-A-LOT!<i className="fas fa-book"/></title>
+          <title className="is-size-1 navbar-brand site-logo"><i className="fas fa-chess-knight logo-images" />BOOKS-A-LOT!<i className="fas fa-book logo-images"/></title>
           <nav className="navbar-end">
             <div>
               <Link to="/books" className="nav-item">Books</Link>

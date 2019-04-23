@@ -830,7 +830,7 @@ var UserHome = function UserHome(props) {
         src: book.imgUrl,
         width: 100,
         height: 200
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, book.title));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, book.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$ ", (book.price / 100).toFixed(2)));
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   }));
 };

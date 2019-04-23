@@ -29,6 +29,7 @@ export const UserHome = props => {
                     <img src={book.imgUrl} width={100} height={200}/>
                   {/* </figure> */}
                   <h2>{book.title}</h2>
+                  <h2>$ {(book.price / 100).toFixed(2)}</h2>
                 </div>
               })
             }

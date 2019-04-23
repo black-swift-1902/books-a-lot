@@ -14,8 +14,8 @@ class SingleBook extends Component {
     const {title, imgUrl, price, description} = this.props.selectBook
     const message = this.props.message
     return (
-      <div>
-        <h2>{title}</h2>
+      <div className='centered-item'>
+        <h2 className='single-book-title'>{title}</h2>
         <img src={imgUrl} />
         <h4>$ {(price / 100).toFixed(2)}</h4>
         <p>{description}</p>

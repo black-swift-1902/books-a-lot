@@ -25,9 +25,9 @@ class Checkout extends Component {
                 <figure className="image is-128x128">
                   <img src={book.imgUrl} />
                 </figure>
+                <br />
               </div>
               <div className="column">
-                <br />
                 <h4>Single Price: $ {(book.price/100).toFixed(2)}</h4>
                 <h4>Quantity: {book.order_log.quantity}</h4>
                 <h4>

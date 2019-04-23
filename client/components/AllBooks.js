@@ -16,7 +16,7 @@ export class AllBooks extends Component {
 
   render() {
     return <div>
-        <h1 className="is-size-2 has-text-centered">Our Books</h1>
+        <h1 className="is-size-2 has-text-centered all-books-heading">Our Books</h1>
         <br />
         <div className="columns row">
           {this.props.booksArr.map(book => {

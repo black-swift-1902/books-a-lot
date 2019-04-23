@@ -1,6 +1,5 @@
 export const LOAD_CART = 'LOAD_CART'
 import axios from 'axios'
-const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 const CLEAR_CART = 'CLEAR_CART'
 
@@ -8,13 +7,6 @@ const initialState = []
 /**
  * ACTION CREATORS
  */
-
-const addBook = function(book_id) {
-  return {
-    type: ADD_BOOK,
-    book_id
-  }
-}
 
 export const removeBook = function(index) {
   return {
@@ -38,8 +30,14 @@ const loadCart = function(books) {
 
 export const addToCart = function(book) {
   return async dispatch => {
+<<<<<<< HEAD
     await axios.post('/api/cart', book)
     const {data} = await axios.get('/api/cart')
+=======
+    await axios.post('/api/cart', book);
+    const { data } = await axios.get('/api/cart');
+    data.message = 'Item added to cart';
+>>>>>>> efb1ae43994bf60326a45bac4aa13b7d850b28ac
     dispatch(loadCart(data))
   }
 }
@@ -77,7 +75,11 @@ export default function(state = initialState, action) {
       break
 
     case CLEAR_CART:
+<<<<<<< HEAD
       newState = []
+=======
+      newState = [];
+>>>>>>> efb1ae43994bf60326a45bac4aa13b7d850b28ac
       break
 
     case LOAD_CART:

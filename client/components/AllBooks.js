@@ -17,8 +17,8 @@ export class AllBooks extends Component {
   render() {
     return <div>
         <h1 className="is-size-2 has-text-centered">Our Books</h1>
-        <hr />
-        <div className="columns">
+        <br />
+        <div className="columns row">
           {this.props.booksArr.map(book => {
             return <SingleBookCard key={`book-${book.id}`} book={book} className="column is-one-third has-text-centered" />
           })}

@@ -27,7 +27,7 @@ class Checkout extends Component {
                 </figure>
               </div>
               <div className="column">
-                <hr />
+                <br />
                 <h4>Single Price: $ {(book.price/100).toFixed(2)}</h4>
                 <h4>Quantity: {book.order_log.quantity}</h4>
                 <h4>
@@ -43,7 +43,7 @@ class Checkout extends Component {
               </div>
             </div>
         })}
-        <hr />
+        <br />
         <div>
           <h4 className="">Subtotal: $ {(totalPrice/100).toFixed(2)}</h4>
           <h4>Tax: $ {(totalPrice/100 * 0.08875).toFixed(2)}</h4>

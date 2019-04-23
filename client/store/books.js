@@ -8,7 +8,6 @@ const GOT_BOOKS = 'GOT_BOOKS'
 /**
  * INITIAL STATE
  */
-
 const booksArray = [];
 
 /**
@@ -31,7 +30,6 @@ export const getBooks = () => async dispatch => {
 /**
  * REDUCER
  */
-
 export default function(state = booksArray, action) {
   switch (action.type) {
     case GOT_BOOKS:

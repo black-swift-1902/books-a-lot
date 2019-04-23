@@ -1,3 +1,11 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
 /******/ 		}
@@ -1157,6 +1165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "submitOrder", function() { return submitOrder; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./client/store/user.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -1173,6 +1182,7 @@ var LOAD_CART = 'LOAD_CART';
 
 var REMOVE_BOOK = 'REMOVE_BOOK';
 var CLEAR_CART = 'CLEAR_CART';
+
 var initialState = [];
 /**
  * ACTION CREATORS
@@ -1318,9 +1328,18 @@ var submitOrder = function submitOrder(total) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders', total);
 
               case 2:
+                // const res = await axios.get('/auth/me')
+                // const user = res.data;
+                // if(user){
+                //   const {data} = await axios.get('/api/orders');
+                //   user.orderHistory = data;
+                //   console.log(user);
+                //   dispatch(getUser(user))
+                // }
+                dispatch(Object(_user__WEBPACK_IMPORTED_MODULE_1__["me"])());
                 dispatch(clearCart());
 
-              case 3:
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -1612,14 +1631,21 @@ var me = function me() {
               case 3:
                 res = _context.sent;
                 user = res.data;
-                _context.next = 7;
+
+                if (!user) {
+                  _context.next = 11;
+                  break;
+                }
+
+                _context.next = 8;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/orders');
 
-              case 7:
+              case 8:
                 _ref2 = _context.sent;
                 data = _ref2.data;
                 user.orderHistory = data;
-                dispatch(getUser(user));
+
+              case 11:
                 dispatch(getUser(user || defaultUser));
                 _context.next = 17;
                 break;
@@ -13508,6 +13534,7 @@ module.exports = (function() {
  *
  * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
  * @license  MIT
+ */
 /* eslint-disable no-proto */
 
 
@@ -46123,7 +46150,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

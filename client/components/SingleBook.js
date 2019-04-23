@@ -17,7 +17,7 @@ class SingleBook extends Component {
       <div>
         <h2>{title}</h2>
         <img src={imgUrl} />
-        <h4>$ {(price/100).toFixed(2)}</h4>
+        <h4>$ {(price / 100).toFixed(2)}</h4>
         <p>{description}</p>
         <button onClick={() => this.props.addBookToCart(this.props.selectBook)}>
           Add To Cart
@@ -35,11 +35,12 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-  getOneBook(bookId) {
-    return dispatch(getOneBook(bookId))
-  },
-  addBookToCart(book) {
-    return dispatch(addToCart(book))
+    getOneBook(bookId) {
+      return dispatch(getOneBook(bookId))
+    },
+    addBookToCart(book) {
+      return dispatch(addToCart(book))
+    }
   }
 }
 

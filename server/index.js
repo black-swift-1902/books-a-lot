@@ -63,8 +63,7 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-<<<<<<< HEAD
-=======
+// all users route - disable for security
   // app.use((req, res, next) => {
   //   if (!req.session.cart) {
   //     req. = []
@@ -74,7 +73,6 @@ const createApp = () => {
   //   next() // needed to continue through express middleware
   // })
 
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))

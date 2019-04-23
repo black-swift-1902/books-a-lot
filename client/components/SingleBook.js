@@ -14,12 +14,23 @@ class SingleBook extends Component {
     const {title, imgUrl, price, description} = this.props.selectBook
     const message = this.props.message
     return (
-      <div className='centered-item'>
+      <div className='single-book-container'>
         <h2 className='single-book-title'>{title}</h2>
-        <img src={imgUrl} />
-        <h4>$ {(price / 100).toFixed(2)}</h4>
-        <p>{description}</p>
-        <button
+        <div className='single-book-information'>
+        <div className="single-book-column">
+          <img src={imgUrl} />  
+        </div>
+        <div className="single-book-column description-and-price">
+          <div className="book-description">
+            <h2 className="overview">Overview</h2>
+            <br />
+            <p>{description}</p>
+          </div>
+          <br />
+          <p className='single-book-price'>$ {(price / 100).toFixed(2)}</p>
+        </div>
+        </div>
+        <button className="button is-link"
           onClick={() => {
             this.props.addBookToCart(this.props.selectBook)
           }}

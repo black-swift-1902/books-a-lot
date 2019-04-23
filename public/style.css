@@ -40,11 +40,48 @@ form div {
 }
 
 .single-book-title {
-  font-size: 1.3em;
+  font-size: 1.5em;
   text-transform: uppercase;
   letter-spacing: 3px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .logo-images {
   padding: 0.3em;
+}
+
+.single-book-container {
+  text-align: center;
+}
+
+.single-book-information {
+  text-align: center;
+  display: flex;
+}
+
+.single-book-column {
+  justify-content: space-between;
+  width: 48%;
+}
+
+.description-and-price {
+  margin-top: 150px;
+}
+
+.book-description {
+  padding: 4em;
+  background-color: #f2f2f1;
+}
+
+.overview {
+  font-weight: bold;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+}
+
+.single-book-price {
+  font-weight: bold;
+  font-size: 1.2em;
 }

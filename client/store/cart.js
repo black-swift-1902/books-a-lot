@@ -55,14 +55,6 @@ export const removeBookThunk = function(index) {
 export const submitOrder = function(total) {
   return async dispatch => {
     await axios.post('/api/orders', total)
-    // const res = await axios.get('/auth/me')
-    // const user = res.data;
-    // if(user){
-    //   const {data} = await axios.get('/api/orders');
-    //   user.orderHistory = data;
-    //   console.log(user);
-    //   dispatch(getUser(user))
-    // }
     dispatch(me())
     dispatch(clearCart())
   }

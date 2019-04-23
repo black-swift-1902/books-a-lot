@@ -18,22 +18,21 @@ export const UserHome = props => {
       <h3>Welcome, {email}</h3>
       {
         orderHistory && orderHistory.map((order, index) => {
-          return (<div key={index}>
+          return (<div key={index} style={{border : '1px solid #BEBEBE'}}>
             <h2>Order # {orderHistory.length - index}:</h2>
             <h2>total price: $ {(order.total / 100).toFixed(2)}</h2>
             <h3>Date: {dateConvert(order.updatedAt)}</h3>
             {
               order.books.map((book) => {
                 return <div key={book.id}>
-                  {/* <figure className="image is-128x128"> */}
                     <img src={book.imgUrl} width={100} height={200}/>
-                  {/* </figure> */}
                   <h2>{book.title}</h2>
                   <h2>$ {(book.price / 100).toFixed(2)}</h2>
-                </div>
+                  <h2>quantity: {(book.order_log.quantity)}</h2>
+                  <br />
+                </div>              
               })
             }
-            <br />
           </div>
           )
         })

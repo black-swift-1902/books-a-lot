@@ -6,29 +6,25 @@ import {auth} from '../store'
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error, altName} = props
 
   return (
-    <div>
+    <div className="level-item">
       <form onSubmit={handleSubmit} name={name}>
-        <div>
+        <div className="field is-horizontal level-item">
           <label htmlFor="email">
-            <small>Email</small>
+            <input name="email" type="text" placeholder="email" />
           </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
           <label htmlFor="password">
-            <small>Password</small>
+            <input name="password" type="password" placeholder="password" />
           </label>
-          <input name="password" type="password" />
+          <button type="submit" className="is-small">
+            {displayName}
+          </button>
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error && error.response && <div>{error.response.data}</div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      {/* <a href="/auth/google">{displayName} with Google</a> */}
     </div>
   )
 }
@@ -43,7 +39,8 @@ const AuthForm = props => {
 const mapLogin = state => {
   return {
     name: 'login',
-    displayName: 'Login',
+    displayName: 'login',
+    altLink: 'sign-up',
     error: state.user.error
   }
 }
@@ -51,7 +48,8 @@ const mapLogin = state => {
 const mapSignup = state => {
   return {
     name: 'signup',
-    displayName: 'Sign Up',
+    displayName: 'sign-up',
+    altLink: 'login',
     error: state.user.error
   }
 }

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getOneBook} from '../store'
-import {Link} from 'react-router-dom'
 import {addToCart} from '../store/cart'
 
 class SingleBook extends Component {
@@ -12,18 +11,19 @@ class SingleBook extends Component {
   }
 
   render() {
-    const {title, imgUrl, price, description} = this.props.selectBook;
-    const message = this.props.message;
+    const {title, imgUrl, price, description} = this.props.selectBook
+    const message = this.props.message
     return (
       <div>
         <h2>{title}</h2>
         <img src={imgUrl} />
-        <h4>$ {(price/100).toFixed(2)}</h4>
+        <h4>$ {(price / 100).toFixed(2)}</h4>
         <p>{description}</p>
-        <button onClick={() => {
-          this.props.addBookToCart(this.props.selectBook);
-          
-        }}>
+        <button
+          onClick={() => {
+            this.props.addBookToCart(this.props.selectBook)
+          }}
+        >
           Add To Cart
         </button>
         {message && <h5>{message}</h5>}
@@ -39,14 +39,16 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => ({
-  getOneBook: function(bookId) {
-    return dispatch(getOneBook(bookId))
-  },
-  addBookToCart: function(book) {
-    return dispatch(addToCart(book))
+const mapDispatch = dispatch => {
+  return {
+    getOneBook(bookId) {
+      return dispatch(getOneBook(bookId))
+    },
+    addBookToCart(book) {
+      return dispatch(addToCart(book))
+    }
   }
-})
+}
 
 /**
  * PROP TYPES

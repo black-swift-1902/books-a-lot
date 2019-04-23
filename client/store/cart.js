@@ -30,9 +30,9 @@ const loadCart = function(books) {
 
 export const addToCart = function(book) {
   return async dispatch => {
-    await axios.post('/api/cart', book);
-    const { data } = await axios.get('/api/cart');
-    data.message = 'Item added to cart';
+    await axios.post('/api/cart', book)
+    const {data} = await axios.get('/api/cart')
+    data.message = 'Item added to cart'
     dispatch(loadCart(data))
   }
 }

@@ -492,7 +492,7 @@ var SingleBookCard = function SingleBookCard(props) {
     className: "card-footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "card-footer-item"
-  }, "Price: ", (book.price / 100).toFixed(2)))));
+  }, "Price: $", (book.price / 100).toFixed(2)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleBookCard);

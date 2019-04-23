@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import {Link} from 'react-router-dom'
 /**
  * COMPONENT
  */
@@ -10,7 +9,7 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error, altName} = props
 
   return (
-    <div className="level">
+    <div className="level-item">
       <form onSubmit={handleSubmit} name={name}>
         <div className="field is-horizontal level-item">
           <label htmlFor="email">
@@ -22,11 +21,8 @@ const AuthForm = props => {
           <button type="submit" className="is-small">
             {displayName}
           </button>
-          <Link to="/signup" className="nav-item">
-            signup
-          </Link>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error && error.response && <div>{error.response.data}</div>}
       </form>
       {/* <a href="/auth/google">{displayName} with Google</a> */}
     </div>

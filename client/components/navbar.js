@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link, Route, Switch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getCartFromSession, clearCart} from '../store/cart'
-import {Login, Signup} from './auth-form'
+import {Login} from './auth-form'
 
 class Navbar extends React.Component {
   componentDidMount() {
@@ -21,30 +21,30 @@ class Navbar extends React.Component {
         <title className="is-size-1 navbar-brand site-logo">
           <i className="fas fa-chess-knight logo-images" />BOOKS-A-LOT!<i className="fas fa-book logo-images" />
         </title>
-        <nav className="navbar-end">
+        <nav className="navbar-end level-item">
           <div className="level-item">
-            <Link to="/books" className="nav-item">
+            <Link to="/books" className="nav-item level-item">
               Books
             </Link>
-            <Link to="/checkout" className="nav-item">
+            <Link to="/checkout" className="nav-item level-item">
               cart ({cartLength})
             </Link>
           </div>
           {isLoggedIn ? (
-            <div>
+            <div className="level-item">
               {/* The navbar will show these links after you log in */}
               Welcome, {userEmail}!
-              <a href="#" onClick={handleClick} className="nav-item">
+              <a href="#" onClick={handleClick} className="nav-item level-item">
                 logout
               </a>
             </div>
           ) : (
-            <div className="nav-right">
+            <div className="nav-right level-item">
               {/* The navbar will show these links before you log in */}
-              <Switch>
-                <Route path="/" component={Login} />
-                <Route path="/" component={Signup} />
-              </Switch>
+              <Login className="level-item" />
+              <Link to="/signup" className="nav-item level-item">
+                signup
+              </Link>
             </div>
           )}
         </nav>

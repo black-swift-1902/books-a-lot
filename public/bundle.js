@@ -520,8 +520,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
 
 
 
@@ -537,7 +535,7 @@ var AuthForm = function AuthForm(props) {
       error = props.error,
       altName = props.altName;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "level"
+    className: "level-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     name: name
@@ -558,10 +556,7 @@ var AuthForm = function AuthForm(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "is-small"
-  }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-    to: "/signup",
-    className: "nav-item"
-  }, "signup")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")));
+  }, displayName)), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, error.response.data)));
 };
 /**
  * CONTAINER
@@ -741,28 +736,29 @@ function (_React$Component) {
       }), "BOOKS-A-LOT!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-book logo-images"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar-end"
+        className: "navbar-end level-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "level-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/books",
-        className: "nav-item"
+        className: "nav-item level-item"
       }, "Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/checkout",
-        className: "nav-item"
-      }, "cart (", cartLength, ")")), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-item level-item"
+      }, "cart (", cartLength, ")")), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "level-item"
+      }, "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         onClick: handleClick,
-        className: "nav-item"
+        className: "nav-item level-item"
       }, "logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-        path: "/",
-        component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Login"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-        path: "/",
-        component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Signup"]
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+        className: "nav-right level-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_form__WEBPACK_IMPORTED_MODULE_6__["Login"], {
+        className: "level-item"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/signup",
+        className: "nav-item level-item"
+      }, "signup"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 

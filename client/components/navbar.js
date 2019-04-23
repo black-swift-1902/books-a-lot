@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getCartFromSession, clearCart} from '../store/cart'
 
-
 class Navbar extends React.Component{
   componentDidMount() {
     this.props.loadCart()

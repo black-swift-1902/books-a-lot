@@ -1,12 +1,21 @@
 const router = require('express').Router()
-const { Order, Book, Order_log } = require('../db/models')
-const { Op } = require('sequelize');
+const {Order, Book, Order_log} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    if(!req.session.userId) res.sendStatus(404);
+    if (!req.session.userId) res.sendStatus(404)
     const order = await Order.findByUserId(req.session.userId)
+    res.json(order)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/user/:userId', async (req, res, next) => {
+  try {
+    const order = await Order.findByUserId(req.params.userId)
+    if (!req.session.userId) res.sendStatus(404)
     res.json(order)
   } catch (err) {
     next(err)
@@ -32,19 +41,24 @@ router.get('/:orderId', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-  console.log('body', req.body);
+  console.log('body', req.body)
   try {
     if (!req.session.userId) {
-      await Order.create({ submitted: true, total: rNumber(req.body.total) })
-        .then(order => {
-          req.session.cart.forEach(async book =>
-            await order.addBook(book.id, { through: { quantity: book.order_log.quantity }}));
-            return order;
-        })
-    }
-    else {
+      await Order.create({
+        submitted: true,
+        total: rNumber(req.body.total)
+      }).then(order => {
+        req.session.cart.forEach(
+          async book =>
+            await order.addBook(book.id, {
+              through: {quantity: book.order_log.quantity}
+            })
+        )
+        return order
+      })
+    } else {
       Order.update(
-        { submitted: true, total: Number(req.body.total) },
+        {submitted: true, total: Number(req.body.total)},
         {
           where: {
             userId: req.session.userId,
@@ -53,10 +67,9 @@ router.post('/', async (req, res, next) => {
         }
       )
     }
-    req.session.cart = [];
-    res.status(201).send();
+    req.session.cart = []
+    res.status(201).send()
   } catch (err) {
     next(err)
   }
 })
-

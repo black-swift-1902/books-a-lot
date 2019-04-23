@@ -12,7 +12,7 @@ function dateConvert(time) {
 
 export const UserHome = props => {
   const { email, orderHistory } = props
-  console.log(orderHistory)
+
   return (
     <div>
       <h3>Welcome, {email}</h3>

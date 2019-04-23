@@ -42,7 +42,6 @@ router.get('/:orderId', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-  console.log('body', req.body);
   try {
     if (!req.session.userId) {
       await Order.create({ submitted: true, total: Number(req.body.total) })

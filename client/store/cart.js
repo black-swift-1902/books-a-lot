@@ -22,7 +22,7 @@ export const clearCart = function () {
   }
 }
 
-const loadCart = function(books) {
+const loadCart = function (books) {
   return {
     type: LOAD_CART,
     books

@@ -37,7 +37,7 @@ router.post('/', async (req, res, next) => {
     if (!req.session.userId) {
       await Order.create({ submitted: true, total: rNumber(req.body.total) })
         .then(order => {
-          req.session.cart.forEach(async book => 
+          req.session.cart.forEach(async book =>
             await order.addBook(book.id, { through: { quantity: book.order_log.quantity }}));
             return order;
         })
@@ -59,3 +59,4 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
+// oogabooga!

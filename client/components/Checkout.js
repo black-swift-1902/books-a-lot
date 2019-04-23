@@ -7,12 +7,6 @@ import {priceSum} from '../util'
  */
 
 class Checkout extends Component {
-<<<<<<< HEAD
-=======
-  constructor(props) {
-    super(props)
-  }
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
 
   componentDidMount() {
     this.props.loadCart()
@@ -34,11 +28,11 @@ class Checkout extends Component {
               </div>
               <div className="column">
                 <hr />
-                <h4>Single Price: $ {book.price}</h4>
+                <h4>Single Price: $ {(book.price/100).toFixed(2)}</h4>
                 <h4>Quantity: {book.order_log.quantity}</h4>
                 <h4>
                   Total Price: $
-                  {(book.price * book.order_log.quantity).toFixed(2)}
+                  {(book.price/100 * book.order_log.quantity).toFixed(2)}
                 </h4>
                 <a className="button is-warning" onClick={() => {
                     this.props.removeBookThunk(index)
@@ -51,11 +45,11 @@ class Checkout extends Component {
         })}
         <hr />
         <div>
-          <h4 className="">Subtotal: $ {totalPrice.toFixed(2)}</h4>
-          <h4>Tax: $ {(totalPrice * 0.08875).toFixed(2)}</h4>
-          <h4>Total: $ {(totalPrice * 1.08875).toFixed(2)}</h4>
+          <h4 className="">Subtotal: $ {(totalPrice/100).toFixed(2)}</h4>
+          <h4>Tax: $ {(totalPrice/100 * 0.08875).toFixed(2)}</h4>
+          <h4>Total: $ {(totalPrice/100 * 1.08875).toFixed(2)}</h4>
         </div>
-        {books.length ? <a onClick={() => this.props.submitOrder()} className="button is-primary">
+        {books.length ? <a onClick={() => this.props.submitOrder({total: Math.round(totalPrice*1.08875)})} className="button is-primary">
             Submit Order
           </a> : undefined}
       </div>
@@ -74,7 +68,7 @@ const mapState = state => {
 const mapDispatch = dispatch => ({
   loadCart: () => dispatch(getCartFromSession()),
   removeBookThunk: index => dispatch(removeBookThunk(index)),
-  submitOrder: () => dispatch(submitOrder())
+  submitOrder: (total) => dispatch(submitOrder(total))
 })
 
 export default connect(mapState, mapDispatch)(Checkout)

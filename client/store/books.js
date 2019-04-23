@@ -8,11 +8,8 @@ const GOT_BOOKS = 'GOT_BOOKS'
 /**
  * INITIAL STATE
  */
-<<<<<<< HEAD
+
 const booksArray = [];
-=======
-const booksArr = [];
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
 
 /**
  * ACTION CREATORS
@@ -34,11 +31,8 @@ export const getBooks = () => async dispatch => {
 /**
  * REDUCER
  */
-<<<<<<< HEAD
+
 export default function(state = booksArray, action) {
-=======
-export default function(state = booksArr, action) {
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
   switch (action.type) {
     case GOT_BOOKS:
       return action.books

@@ -2,11 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-<<<<<<< HEAD
-import {getCartFromSession} from '../store/cart'
-=======
-
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
 /**
  * COMPONENT
  */
@@ -68,11 +63,8 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-<<<<<<< HEAD
+
       dispatch(auth(email, password, formName));
-=======
-      dispatch(auth(email, password, formName))
->>>>>>> d8d808a0f52cb58db1e0fc96621ac122c728b670
     }
   }
 }

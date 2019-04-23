@@ -175,7 +175,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "is-size-2 has-text-centered"
+        className: "is-size-2 has-text-centered all-books-heading"
       }, "Our Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "columns row"
       }, this.props.booksArr.map(function (book) {
@@ -298,9 +298,9 @@ function (_Component) {
           className: "image is-128x128"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: book.imgUrl
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "button is-warning",
           onClick: function onClick() {
             _this.props.removeBookThunk(index);
@@ -417,7 +417,11 @@ function (_Component) {
           price = _this$props$selectBoo.price,
           description = _this$props$selectBoo.description;
       var message = this.props.message;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "centered-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "single-book-title"
+      }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: imgUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "$ ", (price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
@@ -731,27 +735,21 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
-        className: "is-size-1 navbar-brand"
+        className: "is-size-1 navbar-brand site-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-chess-knight"
+        className: "fas fa-chess-knight logo-images"
       }), "BOOKS-A-LOT!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-book"
+        className: "fas fa-book logo-images"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/books",
-        className: "nav-item"
-      }, "Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/checkout",
-        className: "nav-item"
-      }, "Cart(", cartLength, ")")), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/home",
         className: "nav-item"
       }, "Home"), "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         onClick: handleClick,
         className: "nav-item"
-      }, "Logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Logout")), ") : (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         path: "/login",
@@ -759,7 +757,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         path: "/signup",
         component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Signup"]
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }))), ")}"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 
@@ -1176,6 +1174,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "submitOrder", function() { return submitOrder; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./client/store/user.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -1192,6 +1191,7 @@ var LOAD_CART = 'LOAD_CART';
 
 var REMOVE_BOOK = 'REMOVE_BOOK';
 var CLEAR_CART = 'CLEAR_CART';
+
 var initialState = [];
 /**
  * ACTION CREATORS
@@ -1337,9 +1337,18 @@ var submitOrder = function submitOrder(total) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/orders', total);
 
               case 2:
+                // const res = await axios.get('/auth/me')
+                // const user = res.data;
+                // if(user){
+                //   const {data} = await axios.get('/api/orders');
+                //   user.orderHistory = data;
+                //   console.log(user);
+                //   dispatch(getUser(user))
+                // }
+                dispatch(Object(_user__WEBPACK_IMPORTED_MODULE_1__["me"])());
                 dispatch(clearCart());
 
-              case 3:
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -1631,14 +1640,21 @@ var me = function me() {
               case 3:
                 res = _context.sent;
                 user = res.data;
-                _context.next = 7;
+
+                if (!user) {
+                  _context.next = 11;
+                  break;
+                }
+
+                _context.next = 8;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/orders');
 
-              case 7:
+              case 8:
                 _ref2 = _context.sent;
                 data = _ref2.data;
                 user.orderHistory = data;
-                dispatch(getUser(user));
+
+              case 11:
                 dispatch(getUser(user || defaultUser));
                 _context.next = 17;
                 break;

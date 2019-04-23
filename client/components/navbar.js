@@ -18,37 +18,28 @@ class Navbar extends React.Component {
     }, 0)
     return (
       <div className="navbar">
-        <title className="is-size-1 navbar-brand">
-          <i className="fas fa-chess-knight" />BOOKS-A-LOT!<i className="fas fa-book" />
+        <title className="is-size-1 navbar-brand site-logo">
+          <i className="fas fa-chess-knight logo-images" />BOOKS-A-LOT!<i className="fas fa-book logo-images" />
         </title>
         <nav className="navbar-end">
           <div>
-            <Link to="/books" className="nav-item">
-              Books
+            {/* The navbar will show these links after you log in */}
+            <Link to="/home" className="nav-item">
+              Home
             </Link>
-            <Link to="/checkout" className="nav-item">
-              Cart({cartLength})
-            </Link>
+            Welcome, {userEmail}!
+            <a href="#" onClick={handleClick} className="nav-item">
+              Logout
+            </a>
           </div>
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home" className="nav-item">
-                Home
-              </Link>
-              Welcome, {userEmail}!
-              <a href="#" onClick={handleClick} className="nav-item">
-                Logout
-              </a>
-            </div>
           ) : (
-            <div className="nav-right">
-              {/* The navbar will show these links before you log in */}
-              <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
-              </Switch>
-            </div>
+          <div className="nav-right">
+            {/* The navbar will show these links before you log in */}
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          </div>
           )}
         </nav>
         <br />

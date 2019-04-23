@@ -175,7 +175,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "is-size-2 has-text-centered"
+        className: "is-size-2 has-text-centered all-books-heading"
       }, "Our Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "columns row"
       }, this.props.booksArr.map(function (book) {
@@ -298,9 +298,9 @@ function (_Component) {
           className: "image is-128x128"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: book.imgUrl
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "button is-warning",
           onClick: function onClick() {
             _this.props.removeBookThunk(index);
@@ -417,7 +417,11 @@ function (_Component) {
           price = _this$props$selectBoo.price,
           description = _this$props$selectBoo.description;
       var message = this.props.message;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "centered-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "single-book-title"
+      }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: imgUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "$ ", (price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
@@ -715,11 +719,11 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
-        className: "is-size-1 navbar-brand"
+        className: "is-size-1 navbar-brand site-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-chess-knight"
+        className: "fas fa-chess-knight logo-images"
       }), "BOOKS-A-LOT!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-book"
+        className: "fas fa-book logo-images"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -807,11 +811,27 @@ __webpack_require__.r(__webpack_exports__);
  * COMPONENT
  */
 
+function dateConvert(time) {
+  var date = new Date(time);
+  return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+}
+
 var UserHome = function UserHome(props) {
   var email = props.email,
       orderHistory = props.orderHistory;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome, ", email), orderHistory && orderHistory.map(function (order) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Date: ", order.updatedAt);
+  console.log(orderHistory);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome, ", email), orderHistory && orderHistory.map(function (order, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Order # ", orderHistory.length - index, ":"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "total price: $ ", (order.total / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Date: ", dateConvert(order.updatedAt)), order.books.map(function (book) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: book.id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: book.imgUrl,
+        width: 100,
+        height: 200
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, book.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$ ", (book.price / 100).toFixed(2)));
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   }));
 };
 /**
@@ -46150,7 +46170,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

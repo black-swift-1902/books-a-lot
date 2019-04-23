@@ -175,7 +175,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "is-size-2 has-text-centered"
+        className: "is-size-2 has-text-centered all-books-heading"
       }, "Our Books"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "columns row"
       }, this.props.booksArr.map(function (book) {
@@ -298,9 +298,9 @@ function (_Component) {
           className: "image is-128x128"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: book.imgUrl
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Single Price: $ ", (book.price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Quantity: ", book.order_log.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Total Price: $", (book.price / 100 * book.order_log.quantity).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "button is-warning",
           onClick: function onClick() {
             _this.props.removeBookThunk(index);
@@ -417,9 +417,26 @@ function (_Component) {
           price = _this$props$selectBoo.price,
           description = _this$props$selectBoo.description;
       var message = this.props.message;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "single-book-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "single-book-title"
+      }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "single-book-information"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "single-book-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: imgUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "$ ", (price / 100).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "single-book-column description-and-price"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "book-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "overview"
+      }, "Overview"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "single-book-price"
+      }, "$ ", (price / 100).toFixed(2)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button is-link",
         onClick: function onClick() {
           _this.props.addBookToCart(_this.props.selectBook);
         }
@@ -715,11 +732,11 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
-        className: "is-size-1 navbar-brand"
+        className: "is-size-1 navbar-brand site-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-chess-knight"
+        className: "fas fa-chess-knight logo-images"
       }), "BOOKS-A-LOT!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-book"
+        className: "fas fa-book logo-images"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {

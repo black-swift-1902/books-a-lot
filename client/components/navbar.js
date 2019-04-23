@@ -1,47 +1,59 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Route, Switch} from 'react-router-dom'
 import {logout} from '../store'
 import {getCartFromSession, clearCart} from '../store/cart'
+import {Login, Signup} from './auth-form'
 
-class Navbar extends React.Component{
+class Navbar extends React.Component {
   componentDidMount() {
     this.props.loadCart()
   }
-  render(){
-    const {handleClick, isLoggedIn, cart} = this.props;
+  render() {
+    const {handleClick, isLoggedIn, cart, userEmail} = this.props
     const cartLength = cart.reduce((acc, book) => {
-      acc += book.order_log.quantity;
-      return acc;
-    }, 0);
-      return (
-        <div className="navbar">
-          <title className="is-size-1 navbar-brand"><i className="fas fa-chess-knight" />BOOKS-A-LOT!<i className="fas fa-book"/></title>
-          <nav className="navbar-end">
+      acc += book.order_log.quantity
+      return acc
+    }, 0)
+    return (
+      <div className="navbar">
+        <title className="is-size-1 navbar-brand">
+          <i className="fas fa-chess-knight" />BOOKS-A-LOT!<i className="fas fa-book" />
+        </title>
+        <nav className="navbar-end">
+          <div>
+            <Link to="/books" className="nav-item">
+              Books
+            </Link>
+            <Link to="/checkout" className="nav-item">
+              Cart({cartLength})
+            </Link>
+          </div>
+          {isLoggedIn ? (
             <div>
-              <Link to="/books" className="nav-item">Books</Link>
-              <Link to="/checkout" className="nav-item">Cart({cartLength})</Link>
+              {/* The navbar will show these links after you log in */}
+              <Link to="/home" className="nav-item">
+                Home
+              </Link>
+              Welcome, {userEmail}!
+              <a href="#" onClick={handleClick} className="nav-item">
+                Logout
+              </a>
             </div>
-            {isLoggedIn ? (
-              <div>
-                {/* The navbar will show these links after you log in */}
-                <Link to="/home" className="nav-item">Home</Link>
-                <a href="#" onClick={handleClick} className="nav-item">
-                  Logout
-                </a>
-              </div>
-            ) : (
-              <div className="nav-right">
-                {/* The navbar will show these links before you log in */}
-                <Link to="/login" className="nav-item">Login</Link>
-                <Link to="/signup" className="nav-item">Sign Up</Link>
-              </div>
-            )}
-          </nav>
-          <br />
-        </div>
-      )
+          ) : (
+            <div className="nav-right">
+              {/* The navbar will show these links before you log in */}
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+              </Switch>
+            </div>
+          )}
+        </nav>
+        <br />
+      </div>
+    )
   }
 }
 /**
@@ -50,7 +62,8 @@ class Navbar extends React.Component{
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    cart: state.cart
+    cart: state.cart,
+    userEmail: state.user.email
   }
 }
 
@@ -60,7 +73,7 @@ const mapDispatch = dispatch => {
       dispatch(logout())
       dispatch(clearCart())
     },
-    loadCart(){
+    loadCart() {
       dispatch(getCartFromSession())
     }
   }

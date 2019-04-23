@@ -516,6 +516,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -528,25 +530,34 @@ var AuthForm = function AuthForm(props) {
   var name = props.name,
       displayName = props.displayName,
       handleSubmit = props.handleSubmit,
-      error = props.error;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      error = props.error,
+      altLink = props.altLink;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "level"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     name: name
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field is-horizontal level-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "email",
-    type: "text"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    type: "text",
+    placeholder: "email"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "password",
-    type: "password"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit"
-  }, displayName)), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/auth/google"
-  }, displayName, " with Google"));
+    type: "password",
+    placeholder: "password"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "is-small"
+  }, displayName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    to: "/".concat(altLink),
+    className: "nav-item"
+  }, altLink)), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", error.response.data, " ")));
 };
 /**
  * CONTAINER
@@ -560,7 +571,8 @@ var AuthForm = function AuthForm(props) {
 var mapLogin = function mapLogin(state) {
   return {
     name: 'login',
-    displayName: 'Login',
+    displayName: 'login',
+    altLink: 'signup',
     error: state.user.error
   };
 };
@@ -568,7 +580,8 @@ var mapLogin = function mapLogin(state) {
 var mapSignup = function mapSignup(state) {
   return {
     name: 'signup',
-    displayName: 'Sign Up',
+    displayName: 'signup',
+    altLink: 'login',
     error: state.user.error
   };
 };
@@ -660,6 +673,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 /* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+/* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -677,6 +691,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -707,7 +722,8 @@ function (_React$Component) {
       var _this$props = this.props,
           handleClick = _this$props.handleClick,
           isLoggedIn = _this$props.isLoggedIn,
-          cart = _this$props.cart;
+          cart = _this$props.cart,
+          userEmail = _this$props.userEmail;
       var cartLength = cart.reduce(function (acc, book) {
         acc += book.order_log.quantity;
         return acc;
@@ -731,19 +747,19 @@ function (_React$Component) {
       }, "Cart(", cartLength, ")")), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/home",
         className: "nav-item"
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Home"), "Welcome, ", userEmail, "!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         onClick: handleClick,
         className: "nav-item"
       }, "Logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/login",
-        className: "nav-item"
-      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/signup",
-        className: "nav-item"
-      }, "Sign Up"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        path: "/login",
+        component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Login"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        path: "/signup",
+        component: _auth_form__WEBPACK_IMPORTED_MODULE_6__["Signup"]
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 
@@ -757,7 +773,8 @@ function (_React$Component) {
 var mapState = function mapState(state) {
   return {
     isLoggedIn: !!state.user.id,
-    cart: state.cart
+    cart: state.cart,
+    userEmail: state.user.email
   };
 };
 
@@ -965,12 +982,6 @@ function (_Component) {
         exact: true,
         path: "/books/:id",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["SingleBook"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/login",
-        component: _components__WEBPACK_IMPORTED_MODULE_4__["Login"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/signup",
-        component: _components__WEBPACK_IMPORTED_MODULE_4__["Signup"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/checkout",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Checkout"]

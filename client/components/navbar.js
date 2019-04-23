@@ -11,14 +11,14 @@ class Navbar extends React.Component{
     this.props.loadCart()
   }
   render(){
-    const {handleClick, isLoggedIn, cart, loadCart} = this.props;
+    const {handleClick, isLoggedIn, cart} = this.props;
     const cartLength = cart.reduce((acc, book) => {
       acc += book.order_log.quantity;
       return acc;
     }, 0);
       return (
         <div className="navbar">
-          <h1 className="is-size-1 navbar-brand">BOOKS-A-LOT!</h1>
+          <title className="is-size-1 navbar-brand"><i className="fas fa-chess-knight" />BOOKS-A-LOT!<i className="fas fa-book"/></title>
           <nav className="navbar-end">
             <div>
               <Link to="/books" className="nav-item">Books</Link>
@@ -40,7 +40,7 @@ class Navbar extends React.Component{
               </div>
             )}
           </nav>
-          <hr />
+          <br />
         </div>
       )
   }

@@ -13,6 +13,16 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/user/:userId', async (req, res, next) => {
+  try {
+    if(!req.session.userId) res.sendStatus(404);
+    const order = await Order.findByUserId(req.session.userId)
+    res.json(order)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:orderId', async (req, res, next) => {
   try {
     const order = await Order.findOne({
@@ -37,7 +47,7 @@ router.post('/', async (req, res, next) => {
     if (!req.session.userId) {
       await Order.create({ submitted: true, total: rNumber(req.body.total) })
         .then(order => {
-          req.session.cart.forEach(async book => 
+          req.session.cart.forEach(async book =>
             await order.addBook(book.id, { through: { quantity: book.order_log.quantity }}));
             return order;
         })
@@ -59,3 +69,4 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
+

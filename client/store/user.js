@@ -25,9 +25,10 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     const user = res.data;
-    const {data} = await axios.get('/api/orders');
-    user.orderHistory = data;
-    dispatch(getUser(user))
+    if(user){
+      const {data} = await axios.get('/api/orders');
+      user.orderHistory = data;
+    }
     dispatch(getUser(user || defaultUser))
   } catch (err) {
     console.error(err)

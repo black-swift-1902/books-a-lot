@@ -20,7 +20,7 @@ export class AllBooks extends Component {
         <br />
         <div className="columns row">
           {this.props.booksArr.map(book => {
-            return <SingleBookCard key={`book-${book.id}`} book={book} className="column is-one-third has-text-centered" />
+            return <SingleBookCard key={`book-${book.id}`} book={book} />
           })}
         </div>
       </div>

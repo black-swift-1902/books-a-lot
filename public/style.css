@@ -6,10 +6,29 @@ a {
   text-decoration: none;
 }
 
+.shrink {
+  max-height: 130%;
+  width: auto;
+  align-items: center;
+}
+
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex: 1 2 32%;
+  flex-wrap: wrap;
+}
+
+.third {
+  display: flex;
+  flex: 1 2 10%;
+  align-items: space-between;
+}
+
+.wrap {
+  display: flex;
+  flex-basis: 10%;
 }
 
 .centered-item {

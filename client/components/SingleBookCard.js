@@ -1,15 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {truncate} from '../util'
 
 const SingleBookCard = props => {
   const {book} = props
   return (
-    <Link to={`/books/${book.id}`}>
+    <Link to={`/books/${book.id}`} className="column is-one-third is-4 has-text-centered row">
       <div className="card column centered-item">
-        <h3 className="card-header-title">{truncate(book.title, 30)}</h3>
+        <h3 className="card-header-title">{book.title}</h3>
         <div className="card-image image is-128x128">
-          <img src={book.imgUrl} />
+          <img src={book.imgUrl} className="shrink"/>
         </div>
         <hr />
         <div className="card-footer">
